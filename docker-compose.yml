@@ -1,0 +1,17 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_container
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=colombia123
+      - MSSQL_PID=Developer
+    volumes:
+      - mssql_data:/var/opt/mssql
+      - ./data:/var/opt/mssql/import_data 
+    restart: always
+
+volumes:
+  mssql_data:

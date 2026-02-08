@@ -1,0 +1,17 @@
+# --- Datos del ICFES ---
+data/*.csv
+data/*.txt
+data/*.zip
+
+# --- Docker ---
+mssql_data/
+
+# --- Python / Agente ---
+venv/
+__pycache__/
+*.py[cod]
+.env
+
+# --- Sistema / VS Code ---
+.vscode/
+.DS_Store
