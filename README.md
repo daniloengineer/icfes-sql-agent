@@ -8,44 +8,58 @@ Este proyecto implementa un agente inteligente capaz de consultar y analizar dat
 
 ```text
 .
-├── data/               # Archivos CSV originales del ICFES (ignorar en Git)
-├── scripts/            # Scripts SQL para limpieza y carga (Bulk Insert)
-├── agent/              # Código del Agente (Python + LangChain/OpenAI)
-├── docker-compose.yml  # Configuración de SQL Server 2022
-└── README.md
+├── agent/              # Código del Agente (Python + LangChain)
+├── data/               # Archivos CSV originales (Ignorados por Git)
+├── scripts/            # Scripts SQL (Creación y Carga)
+├── venv/               # Entorno virtual de Python
+├── docker-compose.yml  # Infraestructura de Base de Datos
+└── README.md           # Documentación
+```
 
-🛠️ Requisitos Previos
-Docker & Docker Compose (instalado en Linux/WSL2).
+---
 
-SQL Server Management Studio (SSMS) o Azure Data Studio (para visualización).
+## 🛠️ Requisitos Previos
 
-Python 3.10+ (para el agente).
+* **Docker & Docker Compose**: Instalado en Linux/WSL2.
+* **SQL Server Management Studio (SSMS)**: O Azure Data Studio para visualización.
+* **Python 3.10+**: Para el funcionamiento del agente.
 
-📦 Configuración del Entorno
-1. Levantar la Base de Datos
+--- 
+
+## 📦 Configuración del Entorno
+
+### 1. Levantar la Base de Datos
 Desde la terminal, en la raíz del proyecto, ejecuta:
 
+```bash
 docker compose up -d
+```
 
-2. Conexión a la Base de Datos
-Host: localhost,1433 (o la IP de WSL)
+### 2. Conexión a la Base de Datos
+Host: localhost,1433 (o la IP de WSL).
 
 User: sa
 
-Password: colombia123 (definida en el compose)
-
-Auth: SQL Server Authentication
+Password: colombia123
 
 Importante: Activar la opción Trust Server Certificate en el cliente SQL.
 
-📈 Flujo de Datos (ICFES)
-Descargar los microdatos desde el portal oficial ICFES Interactivo.
+---
 
-Colocar los archivos en la carpeta /data.
+# 📈 Flujo de Datos (ICFES)
 
-Ejecutar los scripts de /scripts/import_data.sql para cargar la información.
+Descargar: Obtener los microdatos desde el portal oficial del ICFES.
 
-🤖 Agente de IA
-El agente utiliza LangChain para transformar preguntas de usuario en consultas SQL. (Próximamente: Instrucciones de ejecución del agente).
+Ubicar: Colocar los archivos en la carpeta /data.
+
+Cargar: Ejecutar los scripts en /scripts/import_data.sql.
+
+---
+# 🤖 Agente de IA
+El agente utiliza LangChain para transformar preguntas de usuario en consultas SQL directamente sobre la base de datos.
+
+---
 
 Creado con ❤️ por daniloengineer
+
+
